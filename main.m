@@ -41,3 +41,14 @@ mean_rms_deep  = mean(y_deep_rms);
 
 fprintf('Mean RMS for Light Anesthesia EEG: %.4f\n', mean_rms_light);
 fprintf('Mean RMS for Deep Anesthesia EEG : %.4f\n', mean_rms_deep);
+mean_rms_light = mean(y_light_rms);
+mean_rms_deep  = mean(y_deep_rms);
+
+threshold = (mean_rms_light + mean_rms_deep) / 2;
+
+[label_light, green_light, red_light] = classify_state(y_light_rms, threshold);
+[label_deep, green_deep, red_deep] = classify_state(y_deep_rms, threshold);
+
+fprintf('Threshold: %.4f\n', threshold);
+fprintf('Light EEG classified as: %s\n', label_light);
+fprintf('Deep EEG classified as: %s\n', label_deep);
