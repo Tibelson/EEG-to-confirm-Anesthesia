@@ -52,3 +52,14 @@ threshold = (mean_rms_light + mean_rms_deep) / 2;
 fprintf('Threshold: %.4f\n', threshold);
 fprintf('Light EEG classified as: %s\n', label_light);
 fprintf('Deep EEG classified as: %s\n', label_deep);
+
+% Prepare Simulink inputs
+inputSignal = timeseries(x_light(:), t(:));   % swap x_deep to test deep
+threshold   = (mean_rms_light + mean_rms_deep) / 2;
+
+% Display values for reference
+fprintf('Simulink threshold set to: %.4f\n', threshold);% Clear any cached references
+
+
+
+
